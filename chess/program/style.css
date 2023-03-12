@@ -1,0 +1,55 @@
+.chess-root {
+    --tile-size: 2rem;
+    max-width: max-content;
+    max-height: max-content;
+    background-color: black;
+}
+#chessboard {
+    display:flex;
+    max-width: calc(var(--tile-size) * 8);
+    max-height: calc(var(--tile-size) * 8);
+    min-width: calc(var(--tile-size) * 8);
+    min-height: calc(var(--tile-size) * 8);
+    flex-wrap: wrap;
+    border: 2px solid rgb(77, 21, 21);
+    align-items:flex-end;
+    rotate: 180deg;
+}
+.board-tile {
+    rotate: 180deg;
+    width: var(--tile-size);
+    height: var(--tile-size); 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board-tile::before {
+    content: '';
+    visibility: hidden;
+    position: absolute;
+    width:calc(var(--tile-size) / 4);
+    height:calc(var(--tile-size) / 4);
+    background-color: rgb(0, 60, 255);
+    border-radius: 50%;
+    z-index: 4;
+}
+.moveoption-dots::before {
+    visibility: visible;
+}
+.bt-white {
+    background-color: rgb(250, 225, 201);
+}
+.bt-black {
+    background-color: rgb(75, 37, 37);
+}
+.greentileframe {
+    position: absolute;
+    top:0px;left:0px;right:0px;bottom:0px;
+    border:1px solid rgb(48, 255, 48);
+}
+.piece-image {
+    position: absolute;
+    height: calc(var(--tile-size) - 4px);
+    user-select: none;
+}
