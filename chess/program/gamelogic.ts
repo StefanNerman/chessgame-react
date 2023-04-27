@@ -93,15 +93,16 @@ class Tiles {
                 if(e.position === parseInt(`${row}1`)) this.positions[i].piece = false
                 if(e.position === parseInt(`${row}2`)) this.positions[i].piece = `${clr}50`
                 if(e.position === parseInt(`${row}3`)) this.positions[i].piece = `${clr}11`
-            }) 
-            return
+            })
         }
-        this.positions.forEach((e, i) => {
-            if(e.position === parseInt(`${row}4`)) this.positions[i].piece = false
-            if(e.position === parseInt(`${row}8`)) this.positions[i].piece = false
-            if(e.position === parseInt(`${row}6`)) this.positions[i].piece = `${clr}50`
-            if(e.position === parseInt(`${row}5`)) this.positions[i].piece = `${clr}11`
-        })
+        if(side === 'left'){
+            this.positions.forEach((e, i) => {
+                if(e.position === parseInt(`${row}4`)) this.positions[i].piece = false
+                if(e.position === parseInt(`${row}8`)) this.positions[i].piece = false
+                if(e.position === parseInt(`${row}6`)) this.positions[i].piece = `${clr}50`
+                if(e.position === parseInt(`${row}5`)) this.positions[i].piece = `${clr}11`
+            })
+        }
         if(isLocalGame){
             playerColor === 'white' ? setPlayerColor('black') : setPlayerColor('white')
         }
