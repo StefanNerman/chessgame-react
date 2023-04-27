@@ -23,8 +23,6 @@ interface actionInfoObj {
 export let isLocalGame = false
 
 export let playerColor = 'white'
-//setPlayerColor is only used once in gamelogic.ts at lines 254 and 256 to make the MoveFinder be able to check if a move results in a checkmate or not
-//I know its not the optimal way but its not that big of a deal so I never bothered to fix it
 export function setPlayerColor(color: string) {playerColor = color}
 
 export function artificialMove(from: number, to: number){
