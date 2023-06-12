@@ -17,6 +17,7 @@ If you want to play the game on a single device go to ChessComponent.tsx file an
  
  If you want to use your own piece images insted of the random ones I've found on the internet just go to the piecesImages.ts file and replace my links with yours.
 ## TODO's
+- System that recognises draws
 - System that upgrades pawns to better pieces when they reach the opposite side of the board
 - The en passant move
 - System to prevent player from castling if the king has to pass through a dangerous tile on his way to the desired position
