@@ -373,7 +373,6 @@ function canKingCastle(king: TileObj): Array<number | undefined> {
 function canKingCastleLeftSide(row: number): Array<number | undefined>{
     let rookPosition = parseInt(`${row}${8}`)
     if(!tiles.getTileInfo(rookPosition)?.piece) return []
-    if(tiles.getTileInfo(parseInt(`${row}${5}`))?.piece) return []
     if(tiles.getTileInfo(parseInt(`${row}${6}`))?.piece) return []
     if(tiles.getTileInfo(parseInt(`${row}${7}`))?.piece) return []
     return [parseInt(`${row}8`)]
@@ -381,6 +380,7 @@ function canKingCastleLeftSide(row: number): Array<number | undefined>{
 function canKingCastleRightSide(row: number): Array<number | undefined>{
     let rookPosition = parseInt(`${row}${1}`)
     if(!tiles.getTileInfo(rookPosition)?.piece) return []
+    if(tiles.getTileInfo(parseInt(`${row}${4}`))?.piece) return []
     if(tiles.getTileInfo(parseInt(`${row}${3}`))?.piece) return []
     if(tiles.getTileInfo(parseInt(`${row}${2}`))?.piece) return []
     return [parseInt(`${row}1`)]
