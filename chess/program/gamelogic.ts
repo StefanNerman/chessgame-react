@@ -36,7 +36,7 @@ ARRAY WITH HARDCODED START POSITIONS:
 =====================================================================*/
 
 const startPositions: Array<TileObj> = [
-    {position:11, piece:'110', color:'black'},{position:12, piece:'120', color:'white'},{position:13, piece:'130', color:'black'},{position:14, piece:'150', color:'white'},{position:15, piece:'140', color:'black'},{position:16, piece:'131', color:'white'},{position:17, piece:'121', color:'black'},{position:18, piece:'111', color:'white'},
+    {position:11, piece:'110', color:'black'},{position:12, piece:'120', color:'white'},{position:13, piece:'130', color:'black'},{position:14, piece:'140', color:'white'},{position:15, piece:'150', color:'black'},{position:16, piece:'131', color:'white'},{position:17, piece:'121', color:'black'},{position:18, piece:'111', color:'white'},
     {position:21, piece:'100', color:'white'},{position:22, piece:'101', color:'black'},{position:23, piece:'102', color:'white'},{position:24, piece:'103', color:'black'},{position:25, piece:'104', color:'white'},{position:26, piece:'105', color:'black'},{position:27, piece:'106', color:'black'},{position:28, piece:'107', color:'black'},
             
     {position:31, piece:false, color:'black'},{position:32, piece:false, color:'white'},{position:33, piece:false, color:'black'},{position:34, piece:false, color:'white'},{position:35, piece:false, color:'black'},{position:36, piece:false, color:'white'},{position:37, piece:false, color:'black'},{position:38, piece:false, color:'white'},
@@ -45,7 +45,7 @@ const startPositions: Array<TileObj> = [
     {position:61, piece:false, color:'white'},{position:62, piece:false, color:'black'},{position:63, piece:false, color:'white'},{position:64, piece:false, color:'black'},{position:65, piece:false, color:'white'},{position:66, piece:false, color:'black'},{position:67, piece:false, color:'white'},{position:68, piece:false, color:'black'},
             
     {position:71, piece:'000', color:'black'},{position:72, piece:'001', color:'white'},{position:73, piece:'002', color:'black'},{position:74, piece:'003', color:'white'},{position:75, piece:'004', color:'black'},{position:76, piece:'005', color:'white'},{position:77, piece:'006', color:'black'},{position:78, piece:'007', color:'white'},
-    {position:81, piece:'010', color:'white'},{position:82, piece:'020', color:'black'},{position:83, piece:'030', color:'white'},{position:84, piece:'050', color:'black'},{position:85, piece:'040', color:'white'},{position:86, piece:'031', color:'black'},{position:87, piece:'021', color:'white'},{position:88, piece:'011', color:'black'},
+    {position:81, piece:'010', color:'white'},{position:82, piece:'020', color:'black'},{position:83, piece:'030', color:'white'},{position:84, piece:'040', color:'black'},{position:85, piece:'050', color:'white'},{position:86, piece:'031', color:'black'},{position:87, piece:'021', color:'white'},{position:88, piece:'011', color:'black'},
 ]
 
 interface TileObj {
@@ -89,18 +89,18 @@ class Tiles {
         let clr = row === 1 ? '1' : '0'
         if(side === 'right'){
             this.positions.forEach((e, i) => {
-                if(e.position === parseInt(`${row}4`)) this.positions[i].piece = false
+                if(e.position === parseInt(`${row}5`)) this.positions[i].piece = false
                 if(e.position === parseInt(`${row}1`)) this.positions[i].piece = false
-                if(e.position === parseInt(`${row}2`)) this.positions[i].piece = `${clr}50`
-                if(e.position === parseInt(`${row}3`)) this.positions[i].piece = `${clr}11`
+                if(e.position === parseInt(`${row}3`)) this.positions[i].piece = `${clr}50`
+                if(e.position === parseInt(`${row}4`)) this.positions[i].piece = `${clr}11`
             })
         }
         if(side === 'left'){
             this.positions.forEach((e, i) => {
-                if(e.position === parseInt(`${row}4`)) this.positions[i].piece = false
+                if(e.position === parseInt(`${row}5`)) this.positions[i].piece = false
                 if(e.position === parseInt(`${row}8`)) this.positions[i].piece = false
-                if(e.position === parseInt(`${row}6`)) this.positions[i].piece = `${clr}50`
-                if(e.position === parseInt(`${row}5`)) this.positions[i].piece = `${clr}11`
+                if(e.position === parseInt(`${row}7`)) this.positions[i].piece = `${clr}50`
+                if(e.position === parseInt(`${row}6`)) this.positions[i].piece = `${clr}11`
             })
         }
         if(isLocalGame){
@@ -260,8 +260,8 @@ function isCheckMate(defenseColor: string): boolean {
 
 function moveIsToCastle(from: number, to: number, movePiece: object | undefined): boolean{
     if((movePiece as any).piece.slice(1, 2) !== '5') return false
-    if(from !== 14 && (movePiece as any).piece.slice(0, 1) !== '0') return false
-    if(from !== 84 && (movePiece as any).piece.slice(0, 1) !== '1') return false
+    if(from !== 15 && (movePiece as any).piece.slice(0, 1) !== '0') return false
+    if(from !== 85 && (movePiece as any).piece.slice(0, 1) !== '1') return false
     if((movePiece as any).piece.slice(0, 1) === '1' && (to === 11 || to === 18)) return true
     if((movePiece as any).piece.slice(0, 1) === '0' && (to === 81 || to === 88)) return true
     return false
@@ -278,7 +278,7 @@ function castleRightSide(row: number): actionMoveInfoObj{
     let outStr = `${clr}50:${clr}11`
     return {
         moveAction: 'move',
-        move: outStr + `${row === 1 ? 14 : 84}${row === 1 ? 11 : 81}`
+        move: outStr + `${row === 1 ? 15 : 85}${row === 1 ? 11 : 81}`
     }
 }
 function castleLeftSide(row: number): actionMoveInfoObj{
@@ -287,7 +287,7 @@ function castleLeftSide(row: number): actionMoveInfoObj{
     let outStr = `${clr}50:${clr}10`
     return {
         moveAction: 'move',
-        move: outStr + `${row === 1 ? 14 : 84}${row === 1 ? 18 : 88}`
+        move: outStr + `${row === 1 ? 15 : 85}${row === 1 ? 18 : 88}`
     }
 }
 
